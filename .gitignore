@@ -36,3 +36,9 @@ nosetests.xml
 
 # virtualenv
 env
+
+# backup files
+*~
+
+# don't include settings file with sensitive Twitter OAuth secrets
+config.py
