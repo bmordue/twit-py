@@ -1,2 +1,3 @@
 python-twitter
+oauth
 oauth-python-twitter
