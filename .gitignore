@@ -42,3 +42,4 @@ env
 
 # don't include settings file with sensitive Twitter OAuth secrets
 config.py
+scratch.py
