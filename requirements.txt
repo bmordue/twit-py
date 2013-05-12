@@ -1,3 +1,2 @@
 python-twitter
-oauth
-oauth-python-twitter
+twitter-text-python
