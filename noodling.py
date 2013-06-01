@@ -10,15 +10,16 @@ PAGE_SIZE = 20
 
 api = twitter.Api()
 
-favs = []
-
 def twitter_login():
+	global api
 	api = twitter.Api(consumer_key =      config.TWITTER_CONSUMER_KEY,
 					consumer_secret =     config.TWITTER_CONSUMER_SECRET, 
 					access_token_key =	  config.TWITTER_CONSUMER_KEY, 
 					access_token_secret = config.TWITTER_CONSUMER_SECRET)
 	print 'Logged in'
 
+# probably not the best idea -- will take a while to return, may go over Twitter rate limits
+# better to go page by page and eg insert into db
 def get_all_favs(user):
 	
 	theUser = api.GetUser(user)
@@ -26,11 +27,10 @@ def get_all_favs(user):
 	favs = []
 	for p in range(maxPage):		
 		favs.append( api.GetFavorites(user, page = p) )
-		
-	print len(favs)
+	return favs
 
 def get_urls(tweet):
-	p = ttp.Parser
+	p = ttp.Parser()
 	result = p.parse(tweet.AsDict()['text'])
 	return result.urls
 
